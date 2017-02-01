@@ -51,7 +51,7 @@
                                  @"order"   :   @"name",
                                  @"count"   :   @(count),
                                  @"offset"  :   @(offset),
-                                 @"fields"  :   @"photo_100"
+                                 @"fields"  :   @"photo_100, online"
                              };
     
     [_sessionManager GET:@"friends.get" parameters:parameters progress:nil

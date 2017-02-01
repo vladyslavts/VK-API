@@ -12,28 +12,35 @@
 #import "Friend.h"
 #import "UIScrollView+InfiniteScroll.h"
 
+
 @interface FriendsTableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *friendsArray;
+@property (assign, nonatomic) BOOL loadingData;
 
 @end
 
 @implementation FriendsTableViewController
 
-static int friendsInRequst = 20;
+static int friendsInRequst = 25;
+
+- (void)loadView {
+    [super loadView];
+    
+    self.friendsArray = [NSMutableArray array];
+    [self loadFriendsFromServer];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.friendsArray = [NSMutableArray array];
-    [self loadFriendsFromServer];
     
+    //self.loadingData = YES;
     
+    __weak FriendsTableViewController *weakSelf = self;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
-        // update table view
-        [self loadFriendsFromServer];
-        // finish infinite scroll animation
-        
-        [self.tableView finishInfiniteScroll];
+
+        [weakSelf loadFriendsFromServer];
+        [weakSelf.tableView finishInfiniteScroll];
     }];
 
     
@@ -51,7 +58,16 @@ static int friendsInRequst = 20;
    [[ServerManager sharedManager] getFriendsWithOffset:self.friendsArray.count count:friendsInRequst
                                                success:^(NSArray *friends) {
                                                    [self.friendsArray addObjectsFromArray:friends];
-                                                   [self.tableView reloadData];
+                                                   NSMutableArray* newPaths = [NSMutableArray array];
+                                                   
+                                                   for (int i = (int)[self.friendsArray count] - (int)[friends count]; i < [self.friendsArray count]; i++){
+                                                       [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                                                   }
+                                                   [self.tableView beginUpdates];
+                                                   [self.tableView insertRowsAtIndexPaths:newPaths withRowAnimation:UITableViewRowAnimationTop];
+                                                   [self.tableView endUpdates];
+                                                   self.loadingData = NO;
+
                                                }
                                                failure:^(NSError *error) {
                                                    NSLog(@"Error = %@", [error localizedDescription]);
@@ -80,6 +96,12 @@ static int friendsInRequst = 20;
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName]   ;
     
+    if (friend.online) {
+        cell.detailTextLabel.text = @"Online";
+    } else {
+        cell.detailTextLabel.text = nil;
+    }
+    
     [cell.imageView.layer setMasksToBounds:YES];
     [cell.imageView.layer setCornerRadius:cell.contentView.frame.size.height / 2];
 
@@ -103,7 +125,20 @@ static int friendsInRequst = 20;
     return cell;
 }
 
-
+// Scrolling
+/*
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    
+    if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
+        if (!self.loadingData)
+        {
+            self.loadingData = YES;
+            [self loadFriendsFromServer];
+        }
+    }
+}
+*/
 
 /*
 // Override to support conditional editing of the table view.

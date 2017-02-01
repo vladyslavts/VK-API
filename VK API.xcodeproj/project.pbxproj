@@ -98,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5A2C4241E423E4100CC2746 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F5AF7FE41E3F6661003D5B8B /* FriendsTableViewController.h */,
+				F5AF7FE51E3F6661003D5B8B /* FriendsTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		F5AF7FC11E3F6577003D5B8B = {
 			isa = PBXGroup;
 			children = (
@@ -120,14 +129,13 @@
 			isa = PBXGroup;
 			children = (
 				F5AF802D1E3F85A1003D5B8B /* Model */,
+				F5A2C4241E423E4100CC2746 /* Controller */,
 				F5AF80271E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.h */,
 				F5AF80281E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m */,
 				F5AF7FD01E3F6578003D5B8B /* AppDelegate.h */,
 				F5AF7FD11E3F6578003D5B8B /* AppDelegate.m */,
 				F5AF7FE71E3F66D6003D5B8B /* ServerManager.h */,
 				F5AF7FE81E3F66D6003D5B8B /* ServerManager.m */,
-				F5AF7FE41E3F6661003D5B8B /* FriendsTableViewController.h */,
-				F5AF7FE51E3F6661003D5B8B /* FriendsTableViewController.m */,
 				F5AF7FD61E3F6578003D5B8B /* Main.storyboard */,
 				F5AF7FCD1E3F6578003D5B8B /* Supporting Files */,
 			);
@@ -467,6 +475,7 @@
 				F5AF7FE31E3F6578003D5B8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

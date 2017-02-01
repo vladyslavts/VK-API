@@ -17,7 +17,7 @@
         
         self.firstName = [responseObject valueForKey:@"first_name"];
         self.lastName = [responseObject valueForKey:@"last_name"];
-        
+        self.online = [[responseObject valueForKey:@"online"] integerValue];
         NSString *url = [responseObject valueForKey:@"photo_100"];
         
         if (url) {
