@@ -56,19 +56,19 @@ static int friendsInRequst = 25;
 - (void)loadFriendsFromServer {
     
    [[ServerManager sharedManager] getFriendsWithOffset:self.friendsArray.count count:friendsInRequst
-                                               success:^(NSArray *friends) {
-                                                   [self.friendsArray addObjectsFromArray:friends];
-                                                   NSMutableArray* newPaths = [NSMutableArray array];
+                                               success:^(NSArray *friends)
+    {
+        [self.friendsArray addObjectsFromArray:friends];
+        NSMutableArray* newPaths = [NSMutableArray array];
                                                    
-                                                   for (int i = (int)[self.friendsArray count] - (int)[friends count]; i < [self.friendsArray count]; i++){
-                                                       [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-                                                   }
-                                                   [self.tableView beginUpdates];
-                                                   [self.tableView insertRowsAtIndexPaths:newPaths withRowAnimation:UITableViewRowAnimationTop];
-                                                   [self.tableView endUpdates];
-                                                   self.loadingData = NO;
-
-                                               }
+         for (int i = (int)[self.friendsArray count] - (int)[friends count]; i < [self.friendsArray count]; i++) {
+             [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+         }
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:newPaths withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+         self.loadingData = NO;
+    }
                                                failure:^(NSError *error) {
                                                    NSLog(@"Error = %@", [error localizedDescription]);
                                                }];
