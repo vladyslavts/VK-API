@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F56383291E491DFE00381D04 /* vklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F56383281E491DFE00381D04 /* vklogo.png */; };
+		F563832B1E49201E00381D04 /* vklogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = F563832A1E49201E00381D04 /* vklogo1.png */; };
+		F563832D1E49211A00381D04 /* homelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F563832C1E49211A00381D04 /* homelogo.png */; };
+		F5AA50D61E49B952007A6CAB /* FollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA50D51E49B952007A6CAB /* FollowersTableViewController.m */; };
 		F5AF7FCF1E3F6578003D5B8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF7FCE1E3F6578003D5B8B /* main.m */; };
 		F5AF7FD21E3F6578003D5B8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF7FD11E3F6578003D5B8B /* AppDelegate.m */; };
 		F5AF7FD81E3F6578003D5B8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5AF7FD61E3F6578003D5B8B /* Main.storyboard */; };
@@ -31,10 +35,16 @@
 		F5AF801C1E3F6700003D5B8B /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF800D1E3F6700003D5B8B /* UIWebView+AFNetworking.m */; };
 		F5AF801E1E3F677E003D5B8B /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = F5AF801D1E3F677E003D5B8B /* user.png */; };
 		F5AF80291E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF80281E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m */; };
-		F5AF802C1E3F859D003D5B8B /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF802B1E3F859D003D5B8B /* Friend.m */; };
+		F5AF802C1E3F859D003D5B8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF802B1E3F859D003D5B8B /* User.m */; };
+		F5BE05531E4629170050FF82 /* UserInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BE05521E4629170050FF82 /* UserInfoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F56383281E491DFE00381D04 /* vklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vklogo.png; sourceTree = "<group>"; };
+		F563832A1E49201E00381D04 /* vklogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vklogo1.png; sourceTree = "<group>"; };
+		F563832C1E49211A00381D04 /* homelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homelogo.png; sourceTree = "<group>"; };
+		F5AA50D41E49B952007A6CAB /* FollowersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersTableViewController.h; sourceTree = "<group>"; };
+		F5AA50D51E49B952007A6CAB /* FollowersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersTableViewController.m; sourceTree = "<group>"; };
 		F5AF7FCA1E3F6577003D5B8B /* VK API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AF7FCE1E3F6578003D5B8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5AF7FD01E3F6578003D5B8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,8 +93,10 @@
 		F5AF801D1E3F677E003D5B8B /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = AFNetworking/user.png; sourceTree = "<group>"; };
 		F5AF80271E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+InfiniteScroll.h"; path = "../AFNetworking/UIScrollView+InfiniteScroll.h"; sourceTree = "<group>"; };
 		F5AF80281E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+InfiniteScroll.m"; path = "../AFNetworking/UIScrollView+InfiniteScroll.m"; sourceTree = "<group>"; };
-		F5AF802A1E3F859D003D5B8B /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
-		F5AF802B1E3F859D003D5B8B /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
+		F5AF802A1E3F859D003D5B8B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F5AF802B1E3F859D003D5B8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F5BE05511E4629170050FF82 /* UserInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewController.h; sourceTree = "<group>"; };
+		F5BE05521E4629170050FF82 /* UserInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +110,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F562F3AD1E4A156F0065C36D /* InfiniteScroll */ = {
+			isa = PBXGroup;
+			children = (
+				F5AF80271E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.h */,
+				F5AF80281E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m */,
+			);
+			name = InfiniteScroll;
+			sourceTree = "<group>";
+		};
 		F5A2C4241E423E4100CC2746 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				F5AF7FE41E3F6661003D5B8B /* FriendsTableViewController.h */,
 				F5AF7FE51E3F6661003D5B8B /* FriendsTableViewController.m */,
+				F5BE05511E4629170050FF82 /* UserInfoTableViewController.h */,
+				F5BE05521E4629170050FF82 /* UserInfoTableViewController.m */,
+				F5AA50D41E49B952007A6CAB /* FollowersTableViewController.h */,
+				F5AA50D51E49B952007A6CAB /* FollowersTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -128,15 +153,12 @@
 		F5AF7FCC1E3F6578003D5B8B /* VK API */ = {
 			isa = PBXGroup;
 			children = (
-				F5AF802D1E3F85A1003D5B8B /* Model */,
-				F5A2C4241E423E4100CC2746 /* Controller */,
-				F5AF80271E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.h */,
-				F5AF80281E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m */,
 				F5AF7FD01E3F6578003D5B8B /* AppDelegate.h */,
 				F5AF7FD11E3F6578003D5B8B /* AppDelegate.m */,
-				F5AF7FE71E3F66D6003D5B8B /* ServerManager.h */,
-				F5AF7FE81E3F66D6003D5B8B /* ServerManager.m */,
 				F5AF7FD61E3F6578003D5B8B /* Main.storyboard */,
+				F5AF802D1E3F85A1003D5B8B /* Model */,
+				F5A2C4241E423E4100CC2746 /* Controller */,
+				F562F3AD1E4A156F0065C36D /* InfiniteScroll */,
 				F5AF7FCD1E3F6578003D5B8B /* Supporting Files */,
 			);
 			path = "VK API";
@@ -212,6 +234,9 @@
 		F5AF801F1E3F6792003D5B8B /* img */ = {
 			isa = PBXGroup;
 			children = (
+				F563832C1E49211A00381D04 /* homelogo.png */,
+				F563832A1E49201E00381D04 /* vklogo1.png */,
+				F56383281E491DFE00381D04 /* vklogo.png */,
 				F5AF801D1E3F677E003D5B8B /* user.png */,
 			);
 			name = img;
@@ -220,8 +245,10 @@
 		F5AF802D1E3F85A1003D5B8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F5AF802A1E3F859D003D5B8B /* Friend.h */,
-				F5AF802B1E3F859D003D5B8B /* Friend.m */,
+				F5AF7FE71E3F66D6003D5B8B /* ServerManager.h */,
+				F5AF7FE81E3F66D6003D5B8B /* ServerManager.m */,
+				F5AF802A1E3F859D003D5B8B /* User.h */,
+				F5AF802B1E3F859D003D5B8B /* User.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,10 +311,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56383291E491DFE00381D04 /* vklogo.png in Resources */,
 				F5AF7FDD1E3F6578003D5B8B /* LaunchScreen.storyboard in Resources */,
 				F5AF801E1E3F677E003D5B8B /* user.png in Resources */,
 				F5AF7FDA1E3F6578003D5B8B /* Assets.xcassets in Resources */,
+				F563832D1E49211A00381D04 /* homelogo.png in Resources */,
 				F5AF7FD81E3F6578003D5B8B /* Main.storyboard in Resources */,
+				F563832B1E49201E00381D04 /* vklogo1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,14 +336,16 @@
 				F5AF80131E3F6700003D5B8B /* AFURLSessionManager.m in Sources */,
 				F5AF80171E3F6700003D5B8B /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				F5AF7FD21E3F6578003D5B8B /* AppDelegate.m in Sources */,
+				F5AA50D61E49B952007A6CAB /* FollowersTableViewController.m in Sources */,
 				F5AF801A1E3F6700003D5B8B /* UIProgressView+AFNetworking.m in Sources */,
+				F5BE05531E4629170050FF82 /* UserInfoTableViewController.m in Sources */,
 				F5AF800F1E3F6700003D5B8B /* AFNetworkReachabilityManager.m in Sources */,
 				F5AF7FCF1E3F6578003D5B8B /* main.m in Sources */,
 				F5AF80161E3F6700003D5B8B /* AFNetworkActivityIndicatorManager.m in Sources */,
 				F5AF80191E3F6700003D5B8B /* UIImageView+AFNetworking.m in Sources */,
 				F5AF80181E3F6700003D5B8B /* UIButton+AFNetworking.m in Sources */,
 				F5AF801B1E3F6700003D5B8B /* UIRefreshControl+AFNetworking.m in Sources */,
-				F5AF802C1E3F859D003D5B8B /* Friend.m in Sources */,
+				F5AF802C1E3F859D003D5B8B /* User.m in Sources */,
 				F5AF801C1E3F6700003D5B8B /* UIWebView+AFNetworking.m in Sources */,
 				F5AF80291E3F7B8B003D5B8B /* UIScrollView+InfiniteScroll.m in Sources */,
 				F5AF80111E3F6700003D5B8B /* AFURLRequestSerialization.m in Sources */,

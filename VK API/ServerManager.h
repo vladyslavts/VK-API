@@ -8,13 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+@class User;
+
 @interface ServerManager : NSObject
 
 + (ServerManager *)sharedManager;
 
-- (void)getFriendsWithOffset:(NSInteger)offset
+- (void)getFriendsWithUserID:(NSInteger)userID
+                      offset:(NSInteger)offset
                        count:(NSInteger)count
                      success:(void(^)(NSArray *friends))success
                      failure:(void(^)(NSError *error))failure;
 
+- (void)getUserInfoWithID:(NSInteger)userID
+                  success:(void(^)(User *user))success
+                  failure:(void(^)(NSError *error))failure;
+
+- (void)getFollowersWithUserID:(NSInteger)userID
+                        offset:(NSInteger)offset
+                         count:(NSInteger)count
+                       success:(void(^)(NSArray *followers))success
+                       failure:(void(^)(NSError *error))failure;
 @end

@@ -1,105 +1,88 @@
 //
-//  FriendsTableViewController.m
+//  FollowersTableViewController.m
 //  VK API
 //
-//  Created by Vlad on 30.01.17.
+//  Created by Vlad on 07.02.17.
 //  Copyright © 2017 Vlad. All rights reserved.
 //
 
-#import "FriendsTableViewController.h"
+#import "FollowersTableViewController.h"
 #import "ServerManager.h"
 #import "UIImageView+AFNetworking.h"
-#import "User.h"
-#import "UIScrollView+InfiniteScroll.h"
 #import "UserInfoTableViewController.h"
 
+@interface FollowersTableViewController ()
 
-@interface FriendsTableViewController ()
-
-@property (strong, nonatomic) NSMutableArray *friendsArray;
-@property (assign, nonatomic) BOOL loadingData;
+@property (strong, nonatomic) NSMutableArray *followers;
 
 @end
 
-@implementation FriendsTableViewController
+@implementation FollowersTableViewController
 
-static int friendsInRequst = 25;
-
-- (void)loadView {
-    [super loadView];
-    
-    self.friendsArray = [NSMutableArray array];
-    [self loadFriendsFromServer];
-}
+static int followersInRequst = 25;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.loadingData = YES;
+    self.navigationItem.title = [NSString stringWithFormat:@"Followers"];
     
-    __weak FriendsTableViewController *weakSelf = self;
-    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
-
-      //  [weakSelf loadFriendsFromServer];
-        [weakSelf.tableView finishInfiniteScroll];
-    }];
-
+    self.followers = [NSMutableArray array];
     
+    [self getUserFollowers];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - VK API
 
-- (void)loadFriendsFromServer {
+#pragma mark - API {
+
+- (void)getUserFollowers {
     
-    [[ServerManager sharedManager] getFriendsWithUserID:256126019
-                                                 offset:self.friendsArray.count count:friendsInRequst
-                                               success:^(NSArray *friends)
+    [[ServerManager sharedManager] getFollowersWithUserID:self.user.userID
+                                                   offset:self.followers.count
+                                                    count:followersInRequst
+                                                  success:^(NSArray *followers)
     {
-        [self.friendsArray addObjectsFromArray:friends];
+        [self.followers addObjectsFromArray:followers];
         NSMutableArray* newPaths = [NSMutableArray array];
-                                                   
-         for (int i = (int)[self.friendsArray count] - (int)[friends count]; i < [self.friendsArray count]; i++) {
-             [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-         }
+        
+        for (int i = (int)[self.followers count] - (int)[followers count]; i < [self.followers count]; i++) {
+            [newPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
         
         [self.tableView beginUpdates];
         [self.tableView insertRowsAtIndexPaths:newPaths withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
-         self.loadingData = NO;
+        
     }
-                                               failure:^(NSError *error) {
-                                                   NSLog(@"Error = %@", [error localizedDescription]);
-                                               }];
+                                                  failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return self.friendsArray.count;
+    return self.followers.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *identifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    User *friend = [self.friendsArray objectAtIndex:indexPath.row];
+    User *follower = [self.followers objectAtIndex:indexPath.row];
+
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", follower.firstName, follower.lastName];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.firstName, friend.lastName]   ;
-    
-    if (friend.online) {
+    if (follower.online) {
         cell.detailTextLabel.text = @"Online";
     } else {
         cell.detailTextLabel.text = nil;
@@ -107,9 +90,9 @@ static int friendsInRequst = 25;
     
     [cell.imageView.layer setMasksToBounds:YES];
     [cell.imageView.layer setCornerRadius:cell.contentView.frame.size.height / 2];
-
+    
     __weak UITableViewCell *weakCell = cell;
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:friend.avatarURL];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:follower.avatarURL];
     
     [cell.imageView setImageWithURLRequest:urlRequest
                           placeholderImage:[UIImage imageNamed:@"user.png"]
@@ -126,33 +109,15 @@ static int friendsInRequst = 25;
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    User *friend = [self.friendsArray objectAtIndex:indexPath.row];
+    User *follower = [self.followers objectAtIndex:indexPath.row];
     UserInfoTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"userInfo"];
-    vc.currentUser = friend;
+    vc.currentUser = follower;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
-
-
-
-// Scrolling
-/*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    
-    if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height) {
-        if (!self.loadingData)
-        {
-            self.loadingData = YES;
-            [self loadFriendsFromServer];
-        }
-    }
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.
